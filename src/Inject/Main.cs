@@ -3,7 +3,6 @@
     using EasyHook;
     using System;
     using System.Diagnostics;
-    using System.IO;
     using System.Runtime.InteropServices;
     using System.Threading;
 
@@ -67,7 +66,7 @@
         {
             _hookChildren = hookChildren;
             _channelName = channelName;
-
+            _callback = RemoteHooking.IpcConnectClient<CallbackInterface>(channelName);
         }
         private void HookProcess(ProcessInfo lpProcessInformation, bool callerSuspended)
         {
@@ -554,7 +553,6 @@
         {
             try
             {
-                _callback = RemoteHooking.IpcConnectClient<CallbackInterface>(channelName);
                 _callback.Message($"Run called channelName: {channelName} hookChildren: {hookChildren}");
 
                 OSVERSIONINFOEXW osvi = new OSVERSIONINFOEXW();
@@ -661,8 +659,8 @@
             {
                 while (true)
                 {
-                    Thread.Sleep(1000);
-                    _callback?.Message(pid.ToString());
+                    Thread.Sleep(5000);
+                    _callback?.Message($"{pid} alive");
                 }
             }
             catch
