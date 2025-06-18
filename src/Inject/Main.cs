@@ -15,7 +15,7 @@
         public void Message(string message)
         {
             var pid = RemoteHooking.GetCurrentProcessId();
-            Console.WriteLine($"Message in process {pid} received {message}");
+            Console.WriteLine($"{pid} received: {message}");
         }
         public void ReportException(Exception ex)
         {
