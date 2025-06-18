@@ -8,7 +8,7 @@ Later I rewrote it using the great library [EasyHook](https://easyhook.github.io
 
 This project has now been updated to enable the installation of **SharePoint 2019** on **Windows 11**, showing the powers of API interception for development and educational purposes.
 
-> ⚠ **Note:** This project is not officially supported by Microsoft. It is provided for educational and development use only.
+> ⚠ **Note:** This project is provided for educational and development use only, no need to install SharePoint on a workstation anymore. Next challenge a Docker image.
 
 ## Background
 
