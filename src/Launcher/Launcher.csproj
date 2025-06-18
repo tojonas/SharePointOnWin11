@@ -126,10 +126,6 @@
       <Project>{dfa1efd6-52c1-406c-ada0-803e83dd2487}</Project>
       <Name>Inject</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ServerManagerCmd\ServerManagerCmd.csproj">
-      <Project>{a00e8270-e503-46f1-b528-b69b755bfd8c}</Project>
-      <Name>ServerManagerCmd</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="EasyHook">

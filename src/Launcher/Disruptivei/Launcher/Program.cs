@@ -43,21 +43,7 @@
 
                 Console.Write(fileName);
 
-                string serverManagerCmdFake = null;
                 var prerequisiteInstaller = fileName.ToLower().Contains("prerequisiteinstaller");
-                if (prerequisiteInstaller)
-                {
-                    string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "ServerManagerCmd.exe");
-                    if (!File.Exists(path))
-                    {
-                        var localPath = Path.Combine(currDir, "ServerManagerCmd.exe");
-                        if (File.Exists(localPath))
-                        {
-                            File.Copy(localPath, path);
-                            serverManagerCmdFake = path;
-                        }
-                    }
-                }
 
                 NativeMethods.STARTUPINFO lpStartupInfo = new NativeMethods.STARTUPINFO();
                 NativeMethods.PROCESS_INFORMATION lpProcessInformation = new NativeMethods.PROCESS_INFORMATION();
@@ -110,11 +96,6 @@
                 {
                     NativeMethods.CloseHandle(lpProcessInformation.hProcess);
                     NativeMethods.CloseHandle(lpProcessInformation.hThread);
-                    if (serverManagerCmdFake != null)
-                    {
-                        File.Delete(serverManagerCmdFake);
-                        Console.WriteLine($"Cleaned up {serverManagerCmdFake}");
-                    }
                 }
             }
             catch (Exception exception2)
