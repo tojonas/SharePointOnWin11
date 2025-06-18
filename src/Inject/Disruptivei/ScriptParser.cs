@@ -91,15 +91,20 @@ namespace Disruptivei
                 T($"PowerShell script file [{scriptPath}] not found.");
                 return (false, commandLine);
             }
+            //NET-WCF-Pipe-Activation45
             // Probe the PS1 content
             var scriptContent = File.ReadAllText(scriptPath);
-            if (!scriptContent.Contains("NET-HTTP-Activation"))
+            if (!scriptContent.Contains("NET-HTTP-Activation") && !scriptContent.Contains("NET-WCF-Pipe-Activation45"))
             {
                 T("This script does not contain NET-HTTP-Activation.");
                 return (false, commandLine);
             }
-            T("This script appears to be a Windows Server script.");
-            var cmd = ResourceReader.GetResourceString("Powershell.EnableIISFeatures.ps1");
+            
+            var resource = scriptContent.Contains("NET-WCF-Pipe-Activation45") ?
+                "Powershell.SubscriptionEdition.ps1" :
+                "Powershell.EnableIISFeatures.ps1";
+            T($"This script appears to be a Windows Server script. using resource: {resource}");
+            var cmd = ResourceReader.GetResourceString(resource);
 
             if (rewrite)
             {

@@ -78,6 +78,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <None Include="key.snk" />
+    <EmbeddedResource Include="Powershell\SubscriptionEdition.ps1" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="EasyHook">
