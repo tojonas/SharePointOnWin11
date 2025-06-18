@@ -1,6 +1,6 @@
 # WssOnVista (Updated for SharePoint 2019 on Windows 11)
 
-[WssOnVista was possible thanks to Matt Pietrek and this article.](https://learn.microsoft.com/en-us/archive/msdn-magazine/2002/march/inside-windows-an-in-depth-look-into-the-win32-portable-executable-file-format-part-2) Later I rewrote it using the great library [EasyHook](https://easyhook.github.io/)
+[WssOnVista was possible thanks to this article by Matt Pietrek.](https://learn.microsoft.com/en-us/archive/msdn-magazine/2002/march/inside-windows-an-in-depth-look-into-the-win32-portable-executable-file-format-part-2) Later I rewrote it using the great library [EasyHook](https://easyhook.github.io/)
 
 
 **WssOnVista** is a project originally created in 2008 by Jonas Nilsson that allowed users to install **Windows SharePoint Services (WSS 3.0)** on a workstation operating system — specifically **Windows Vista**.  
@@ -23,6 +23,8 @@ At the time of its creation, WSS 3.0 was officially supported only on server-cla
 
 MIT License. See [LICENSE](LICENSE.txt) for details.
 
+## Instructions
+[Installation instructions](https://github.com/tojonas/SharePointOnWin11/wiki)
 ## Author
 
 Jonas Nilsson  
