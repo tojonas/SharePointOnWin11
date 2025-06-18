@@ -323,8 +323,8 @@
 
             if (String.IsNullOrEmpty(lpApplicationName) && lpCommandLine.ToLower().IndexOf("powershell.exe") != -1)
             {
-                _callback.Message($"CreateProcessW FOUND powershell.exe replacing commandline {lpCommandLine}");
-                lpCommandLine = ReplacePowerShellCmdLine(lpCommandLine);
+                _callback.Message($"CreateProcessW FOUND powershell.exe probing scripts {lpCommandLine}");
+                lpCommandLine = ProbeAndReplacePowershell(lpCommandLine);
             }
 
             bool flag = CreateProcessW(lpApplicationName, lpCommandLine, lpProcessAttributes, lpThreadAttributes, bInheritHandles, dwCreationFlags, lpEnvironment, lpCurrentDirectory, lpStartupInfo, out lpProcessInformation);
@@ -341,7 +341,7 @@
             return flag;
         }
 
-        private static string ReplacePowerShellCmdLine(string commandLine)
+        private static string ProbeAndReplacePowershell(string commandLine)
         {
             var parser = new ScriptParser();
             var result = parser.ProbeScript(commandLine);
