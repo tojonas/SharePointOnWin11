@@ -128,7 +128,7 @@
 
                         T("RegGetValueW {0} {1} >> {2} ", lpValue, Marshal.PtrToStringUni(pvData), ret);
                         // This check should take care of all 4.6 versions, Thanks Carlos Roweder Nass
-                        if (lpValue == "Version" && System.Runtime.InteropServices.Marshal.PtrToStringUni(pvData).StartsWith("4.6"))
+                        if (lpValue == "Version" && Marshal.PtrToStringUni(pvData).StartsWith("4.6"))
                         {
                             Marshal.Copy(net45ver.ToCharArray(), 0, pvData, net45ver.Length);
                         }
@@ -265,8 +265,7 @@
         private static extern uint CoCreateInstance([In, MarshalAs(UnmanagedType.LPStruct)] Guid rclsid, IntPtr pUnkOuter, uint dwClsContext, [In, MarshalAs(UnmanagedType.LPStruct)] Guid riid, out IntPtr ppv);
         private static uint CoCreateInstance_Hooked([In, MarshalAs(UnmanagedType.LPStruct)] Guid rclsid, IntPtr pUnkOuter, uint dwClsContext, [In, MarshalAs(UnmanagedType.LPStruct)] Guid riid, out IntPtr ppv)
         {
-            string str;
-            ProgIDFromCLSID(ref rclsid, out str);
+            ProgIDFromCLSID(ref rclsid, out var str);
             T("CoCreateInstance {0} [{1}]", rclsid, str);
             return CoCreateInstance(rclsid, pUnkOuter, dwClsContext, riid, out ppv);
         }
@@ -706,9 +705,8 @@
             {
                 if (dwlConditionMask != 9223372036854776024L)
                 {
-                    flag = true;
                     T("Changing return to true :: VerifyVersionInfoA({0}, {1}) => {2}", dwTypeMask, dwlConditionMask, flag);
-                    return flag;
+                    return true;
                 }
                 T("Not Changing return to true :: VerifyVersionInfoA({0}, {1}) => {2}", dwTypeMask, dwlConditionMask, flag);
                 return flag;
@@ -728,9 +726,8 @@
             {
                 if (dwlConditionMask != 9223372036854776024L)
                 {
-                    flag = true;
                     T("Changing return to true :: VerifyVersionInfoW({0}, {1}) => {2}", dwTypeMask, dwlConditionMask, flag);
-                    return flag;
+                    return true;
                 }
                 T("Not Changing return to true :: VerifyVersionInfoW({0}, {1}) => {2}", dwTypeMask, dwlConditionMask, flag);
                 return flag;
