@@ -24,7 +24,7 @@ At the time of its creation, WSS 3.0 was officially supported only on server-cla
 MIT License. See [LICENSE](LICENSE.txt) for details.
 
 ## Instructions
-[Installation instructions](https://github.com/tojonas/SharePointOnWin11/wiki)
+[Installation instructions](https://github.com/tojonas/SharePointOnWin11/wiki/Installation)
 ## Author
 
 Jonas Nilsson  
